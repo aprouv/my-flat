@@ -1,0 +1,7 @@
+<div class="card-furniture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= fourniture.image_url %>)">
+  <%= fourniture.name %>
+  <%# <%= link_to "+", fourniture_path(fourniture), method: :delete, data: { confirm: "Are you sure?" }, class: "card-remove-link" %>
+  <%= link_to fourniture_path(fourniture), method: :delete, data:{confirm: "Etes vous sûr de vouloir supprimer ce meuble?"}, class: "card-remove-link" do %>
+    <p><i class="fas fa-trash-alt pl-1"></i></p>
+  <% end %>
+</div>

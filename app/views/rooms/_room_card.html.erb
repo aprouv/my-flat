@@ -1,0 +1,10 @@
+<%= link_to room_path(room) do %>
+  <div class="card-room">
+    <%= image_tag room.banner_url %>
+    <div class="card-room-infos">
+      <div>
+        <h2><%= room.name %></h2>
+      </div>
+    </div>
+  </div>
+<% end %>

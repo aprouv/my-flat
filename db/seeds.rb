@@ -5,3 +5,38 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "destroying everything..."
+
+Room.destroy_all
+
+puts "everything destroyed!"
+
+room_names = [
+  "Living-room",
+  "Bathroom",
+  "Kitchen",
+  "Bedroom",
+  "Toilets",
+]
+
+room_names.each do |room_name|
+  puts "creating #{room_name}..."
+  room_request = RestClient.get("https://source.unsplash.com/1200x700/?room")
+  room = Room.new(
+      name: room_name,
+      banner_url: room_request.request.url
+    )
+  room.save!
+  3.times do
+    fourniture_request = RestClient.get("https://source.unsplash.com/400x300/?furniture")
+    fourniture = Fourniture.new(
+      name: Faker::FunnyName.name,
+      image_url: fourniture_request.request.url
+    )
+    fourniture.room = room
+    fourniture.save!
+    sleep(2)
+  end
+  puts "#{room_name} created!"
+end

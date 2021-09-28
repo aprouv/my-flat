@@ -1,0 +1,25 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @room.banner_url %>');">
+  <div class="container">
+    <h1><%= @room.name %></h1>
+  </div>
+</div>
+
+<div class="pt-30 container">
+  <div class="cards">
+    <% @room.fournitures.each do |fourniture| %>
+      <%= render "rooms/furniture_card", fourniture: fourniture %>
+    <% end %>
+  </div>
+  <div class="pt-30 row justify-content-center">
+    <div class="col-12 col-md-4">
+      <h4 class="text-center">Ajouter un meuble</h4>
+      <%= simple_form_for [ @room, @fourniture ] do |f| %>
+        <%= f.input :name, label: "Nom", placeholder: "Kitchen" %>
+        <%= f.input :image_url, label: "url de l'image associée", placeholder: "https://some_nice_image_found_on_google.jpg" %>
+        <div class="form-actions">
+          <%= f.submit "Ajouter", class: "btn btn-sub" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'rooms#index'
+  root to: 'pages#home'
   resources :rooms, only: [:index, :show, :new, :create, :destroy] do
     resources :fournitures, only: [:create]
   end

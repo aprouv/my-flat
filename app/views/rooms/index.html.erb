@@ -1,0 +1,8 @@
+<div class="section">
+    <h2 class="text-center">Toutes les pièces</h2>
+    <div class="cards">
+      <% @rooms.each do |room| %>
+        <%= render "room_card", room: room %>
+      <% end %>
+    </div>
+  </div>

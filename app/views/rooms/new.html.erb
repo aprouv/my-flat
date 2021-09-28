@@ -1,0 +1,22 @@
+<div class="content-wrapper form-wrapper" style="background-image: linear-gradient(rgba(0,0,0,0.05),rgba(0,0,0,0.05)), url('https://images.unsplash.com/photo-1602595688238-9fffe12d5af3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHJvb218ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60');">
+  <div class="container form-background">
+    <h1 class="text-center">Ajouter une nouvelle pièce</h1>
+    <div class="row justify-content-center form-body">
+      <div class="col-6">
+        <%= simple_form_for(@room) do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+          <div class="form-inputs">
+            <%= f.input :name, label: "Nom" %>
+            <%= f.input :banner_url, label: "Url de l'image associée" %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.submit "Ajouter", class: "btn btn-sub" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
