@@ -13,11 +13,11 @@ Room.destroy_all
 puts "everything destroyed!"
 
 room_names = [
-  "Living-room",
-  "Bathroom",
-  "Kitchen",
-  "Bedroom",
-  "Toilets",
+  "Salon",
+  "Salle de bain",
+  "Cuisine",
+  "Chambre",
+  "Dressing",
 ]
 
 room_names.each do |room_name|
@@ -31,7 +31,7 @@ room_names.each do |room_name|
   3.times do
     fourniture_request = RestClient.get("https://source.unsplash.com/400x300/?furniture")
     fourniture = Fourniture.new(
-      name: Faker::FunnyName.name,
+      name: Faker::House.furniture,
       image_url: fourniture_request.request.url
     )
     fourniture.room = room
